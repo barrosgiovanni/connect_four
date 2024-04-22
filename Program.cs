@@ -4,6 +4,7 @@
     static void Main(string[] args) {
       Gameboard newBoard = new Gameboard();
       newBoard.displayGameboard();
+      newBoard.playerMove('A');
     }
   }
 }
