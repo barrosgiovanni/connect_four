@@ -1,0 +1,15 @@
+/home/iamdboogie/code/barrosgiovanni/connect_four/bin/Debug/net8.0/connect_four
+/home/iamdboogie/code/barrosgiovanni/connect_four/bin/Debug/net8.0/connect_four.deps.json
+/home/iamdboogie/code/barrosgiovanni/connect_four/bin/Debug/net8.0/connect_four.runtimeconfig.json
+/home/iamdboogie/code/barrosgiovanni/connect_four/bin/Debug/net8.0/connect_four.dll
+/home/iamdboogie/code/barrosgiovanni/connect_four/bin/Debug/net8.0/connect_four.pdb
+/home/iamdboogie/code/barrosgiovanni/connect_four/obj/Debug/net8.0/connect_four.GeneratedMSBuildEditorConfig.editorconfig
+/home/iamdboogie/code/barrosgiovanni/connect_four/obj/Debug/net8.0/connect_four.AssemblyInfoInputs.cache
+/home/iamdboogie/code/barrosgiovanni/connect_four/obj/Debug/net8.0/connect_four.AssemblyInfo.cs
+/home/iamdboogie/code/barrosgiovanni/connect_four/obj/Debug/net8.0/connect_four.csproj.CoreCompileInputs.cache
+/home/iamdboogie/code/barrosgiovanni/connect_four/obj/Debug/net8.0/connect_four.sourcelink.json
+/home/iamdboogie/code/barrosgiovanni/connect_four/obj/Debug/net8.0/connect_four.dll
+/home/iamdboogie/code/barrosgiovanni/connect_four/obj/Debug/net8.0/refint/connect_four.dll
+/home/iamdboogie/code/barrosgiovanni/connect_four/obj/Debug/net8.0/connect_four.pdb
+/home/iamdboogie/code/barrosgiovanni/connect_four/obj/Debug/net8.0/connect_four.genruntimeconfig.cache
+/home/iamdboogie/code/barrosgiovanni/connect_four/obj/Debug/net8.0/ref/connect_four.dll

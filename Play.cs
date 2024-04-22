@@ -1,5 +1,4 @@
-namespace ConnectFourGame
-{
+namespace ConnectFourGame {
   public class Play {
 
   }

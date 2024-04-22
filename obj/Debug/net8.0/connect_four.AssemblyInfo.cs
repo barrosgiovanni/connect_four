@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("connect_four")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54bd32f486197c739ba841e60f49fab0bc49399b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b743d9a06e928d85653fa48158c01df2cd9dec9")]
 [assembly: System.Reflection.AssemblyProductAttribute("connect_four")]
 [assembly: System.Reflection.AssemblyTitleAttribute("connect_four")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
