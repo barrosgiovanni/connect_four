@@ -1,18 +1,13 @@
 namespace ConnectFourGame {
   public class Game {
     private Gameboard Gameboard { get; set; } // a game is made with a gameboard...
-    private string FirstPlayerSymbol { get; set; } // symbol to be chosen by player1...
-    private string FirstPlayerName { get; set; }
-    private string SecondPlayerSymbol { get; set; } // symbol to be chosen by player2...
-    private string SecondPlayerName { get; set; }
-
+    private Player FirstPlayer { get; set; } // a first player...
+    private Player SecondPlayer { get; set; } // a second player...
     public Game (string firstPlayerSymbol, string firstPlayerName, string secondPlayerSymbol, string secondPlayerName) {
       // every time we create a game, we'll be creating a gameboard and defining the player's symbols and names...
       Gameboard = new Gameboard();
-      FirstPlayerSymbol = firstPlayerSymbol;
-      FirstPlayerName = firstPlayerName;
-      SecondPlayerSymbol = secondPlayerSymbol;
-      SecondPlayerName = secondPlayerName;
+      FirstPlayer = new Player(firstPlayerName, firstPlayerSymbol);
+      SecondPlayer = new Player(secondPlayerName, secondPlayerSymbol);
     }
     public void StartTheGame() {
       bool isPlayerOneTurn = true; // we'll use this boolean to change player's turn once their move is complete...
@@ -23,17 +18,17 @@ namespace ConnectFourGame {
       while (isGameRunning) {
         if (isPlayerOneTurn) {
           Gameboard.displayGameboard();
-          Console.WriteLine($"It is your turn {FirstPlayerName}.");
+          Console.WriteLine($"It is your turn {FirstPlayer.PlayerName}.");
           Console.WriteLine("Please, select the column you would like to drop your pieces in: ");
           columnChosen = Console.ReadLine();
-          Gameboard.playerMove(columnChosen, FirstPlayerSymbol);
+          Gameboard.playerMove(columnChosen, FirstPlayer.PlayerSymbol);
           isPlayerOneTurn = !isPlayerOneTurn;
         } else {
           Gameboard.displayGameboard();
-          Console.WriteLine($"It is your turn {SecondPlayerName}.");
+          Console.WriteLine($"It is your turn {SecondPlayer.PlayerName}.");
           Console.WriteLine("Please, select the column you would like to drop your pieces in: ");
           columnChosen = Console.ReadLine();
-          Gameboard.playerMove(columnChosen, SecondPlayerSymbol);
+          Gameboard.playerMove(columnChosen, SecondPlayer.PlayerSymbol);
           isPlayerOneTurn = !isPlayerOneTurn;
         }
       }
