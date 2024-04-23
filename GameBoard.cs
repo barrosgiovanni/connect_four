@@ -2,16 +2,15 @@ namespace ConnectFourGame {
   public class Gameboard {
     private static int numOfColumns = 7; // number of columns of the original game...
     private static int numOfRows = 6; // number of rows of the original game + Directions
-    Square[,] gameBoard = new Square[numOfRows, numOfColumns];
-    // creates an array of Squares that will represent the gameboard...
-
-    int[] boardPositions = { 1, 2, 3, 4, 5, 6, 7 };
-    // defining board positions to help players when choosing next move...
-
+    Square[,] gameBoard = new Square[numOfRows, numOfColumns]; // array of Squares that represent the gameboard...
+    int[] boardPositions = { 1, 2, 3, 4, 5, 6, 7 }; // defining board positions to help players when choosing next move...
     public void playerMove(string playerChoice, string playerSymbol) {
-      int moveColumn = int.Parse(playerChoice) - 1;
+      int moveColumn = int.Parse(playerChoice) - 1; // we get the user input and find the column index he wants play...
+      // if the index that was chosen is valid, then we'll proceed...
       if (moveColumn >= 0 && moveColumn < numOfColumns ) {
+        // also checking if the column is not already full...
         if (gameBoard[0, moveColumn] == null) {
+          // if the column is not full, then we'll add square that is not filled out, and add the player symbol...
           for (int row = numOfRows-1; row >= 0; row--) {
             if (gameBoard[row, moveColumn] == null) {
               gameBoard[row, moveColumn] = new Square();
@@ -56,6 +55,5 @@ namespace ConnectFourGame {
         }
       }
     }
-
   }
 }
