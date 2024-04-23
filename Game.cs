@@ -17,19 +17,21 @@ namespace ConnectFourGame {
 
       while (isGameRunning) {
         if (isPlayerOneTurn) {
-          Gameboard.displayGameboard();
-          Console.WriteLine($"It is your turn {FirstPlayer.PlayerName}.");
+          Gameboard.DisplayGameboard();
+          Console.WriteLine($"\nIt is your turn {FirstPlayer.PlayerName}.");
           Console.WriteLine("Please, select the column you would like to drop your pieces in: ");
           columnChosen = Console.ReadLine();
-          Gameboard.playerMove(columnChosen, FirstPlayer.PlayerSymbol);
-          isPlayerOneTurn = !isPlayerOneTurn;
+          if (Gameboard.PlayerMove(columnChosen, FirstPlayer.PlayerSymbol)) {
+            isPlayerOneTurn = !isPlayerOneTurn;
+          }
         } else {
-          Gameboard.displayGameboard();
-          Console.WriteLine($"It is your turn {SecondPlayer.PlayerName}.");
+          Gameboard.DisplayGameboard();
+          Console.WriteLine($"\nIt is your turn {SecondPlayer.PlayerName}.");
           Console.WriteLine("Please, select the column you would like to drop your pieces in: ");
           columnChosen = Console.ReadLine();
-          Gameboard.playerMove(columnChosen, SecondPlayer.PlayerSymbol);
-          isPlayerOneTurn = !isPlayerOneTurn;
+          if (Gameboard.PlayerMove(columnChosen, SecondPlayer.PlayerSymbol)) {
+            isPlayerOneTurn = !isPlayerOneTurn;
+          }
         }
       }
     }

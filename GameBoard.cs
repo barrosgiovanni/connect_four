@@ -4,7 +4,7 @@ namespace ConnectFourGame {
     private static int numOfRows = 6; // number of rows of the original game + Directions
     Square[,] gameBoard = new Square[numOfRows, numOfColumns]; // array of Squares that represent the gameboard...
     int[] boardPositions = { 1, 2, 3, 4, 5, 6, 7 }; // defining board positions to help players when choosing next move...
-    public void playerMove(string playerChoice, string playerSymbol) {
+    public bool PlayerMove(string playerChoice, string playerSymbol) {
       int moveColumn = int.Parse(playerChoice) - 1; // we get the user input and find the column index he wants play...
       // if the index that was chosen is valid, then we'll proceed...
       if (moveColumn >= 0 && moveColumn < numOfColumns ) {
@@ -14,19 +14,23 @@ namespace ConnectFourGame {
           for (int row = numOfRows-1; row >= 0; row--) {
             if (gameBoard[row, moveColumn] == null) {
               gameBoard[row, moveColumn] = new Square();
-              gameBoard[row, moveColumn].setPlayerSymbol(playerSymbol);
+              gameBoard[row, moveColumn].SetPlayerSymbol(playerSymbol);
               break;
             }
           }
+          return true;
         } else {
           Console.WriteLine("Invalid move. Column is full!");
+          return false;
         }
       } else {
         Console.WriteLine("Invalid move. Please, select a column between 1 and 7");
+        return false;
       }
     }
 
-    public void displayGameboard() {
+    public void DisplayGameboard() {
+      Console.WriteLine();
       // printing board positions...
       for (int index = 0; index < boardPositions.Length; index++) {
         Console.Write(" " + boardPositions[index]);
@@ -39,7 +43,7 @@ namespace ConnectFourGame {
           if (gameBoard[row, column] == null) {
             Console.Write("_");
           } else {
-            Console.Write(gameBoard[row, column].getPlayerSymbol());
+            Console.Write(gameBoard[row, column].GetPlayerSymbol());
           }
           Console.Write("|");
         }

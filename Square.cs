@@ -9,11 +9,11 @@ namespace ConnectFourGame {
       PlayerSymbol = playerSymbol;
     }
 
-    public string getPlayerSymbol() {
+    public string GetPlayerSymbol() {
       return PlayerSymbol;
     }
 
-    public void setPlayerSymbol(string playerSymbol) {
+    public void SetPlayerSymbol(string playerSymbol) {
       PlayerSymbol = playerSymbol;
     }
   }

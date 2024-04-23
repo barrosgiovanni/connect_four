@@ -2,18 +2,18 @@
   class Program {
     static void Main(string[] args) {
       // quick introduction...
-      Console.WriteLine("\n\n Welcome to Connect4! \n");
-      Console.WriteLine("Press any key to start a new game.");
+      Console.WriteLine("\nWelcome to Connect4!");
+      Console.WriteLine("\nPress any key to start a new game.");
       Console.ReadKey();
 
       // asking users for their names and symbols...
-      Console.WriteLine("What is Player#1 name?");
+      Console.WriteLine("\nWhat is Player#1 name?");
       string firstPlayerName = Console.ReadLine();
       Console.WriteLine("\nPlease, choose a symbol to fill out the spaces in the board for Player#1: ");
       string firstPlayerSymbol = Console.ReadLine();
-      Console.WriteLine("What is Player#2 name?");
+      Console.WriteLine("\nWhat is Player#2 name?");
       string secondPlayerName = Console.ReadLine();
-      Console.WriteLine("Please, choose a symbol to fill out the spaces in the board for Player#2: ");
+      Console.WriteLine("\nPlease, choose a symbol to fill out the spaces in the board for Player#2: ");
       string secondPlayerSymbol = Console.ReadLine();
 
       // creating a new game and providing the user's names and symbols...
