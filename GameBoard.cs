@@ -5,20 +5,25 @@ namespace ConnectFourGame {
     Square[,] gameBoard = new Square[numOfRows, numOfColumns];
     // creates an array of Squares that will represent the gameboard...
 
-    char[] boardPositions = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+    int[] boardPositions = { 1, 2, 3, 4, 5, 6, 7 };
     // defining board positions to help players when choosing next move...
 
-    public void playerMove(char playerChoice) {
-      int indexMove;
-      if (playerChoice >= 'A' && playerChoice <= 'G') {
-        for (int index = 0; index < boardPositions.Length; index++) {
-          if (playerChoice == boardPositions[index]) {
-            indexMove = index;
-            Console.WriteLine(indexMove);
+    public void playerMove(string playerChoice, string playerSymbol) {
+      int moveColumn = int.Parse(playerChoice) - 1;
+      if (moveColumn >= 0 && moveColumn < numOfColumns ) {
+        if (gameBoard[0, moveColumn] == null) {
+          for (int row = numOfRows-1; row >= 0; row--) {
+            if (gameBoard[row, moveColumn] == null) {
+              gameBoard[row, moveColumn] = new Square();
+              gameBoard[row, moveColumn].setPlayerSymbol(playerSymbol);
+              break;
+            }
           }
+        } else {
+          Console.WriteLine("Invalid move. Column is full!");
         }
       } else {
-        Console.WriteLine("Invalid move...");
+        Console.WriteLine("Invalid move. Please, select a column between 1 and 7");
       }
     }
 
@@ -35,7 +40,7 @@ namespace ConnectFourGame {
           if (gameBoard[row, column] == null) {
             Console.Write("_");
           } else {
-            Console.Write(gameBoard[row, column].getPlayerNumber());
+            Console.Write(gameBoard[row, column].getPlayerSymbol());
           }
           Console.Write("|");
         }

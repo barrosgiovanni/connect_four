@@ -1,21 +1,21 @@
 namespace ConnectFourGame {
   public class Square {
 
-    private string PlayerNumber { get; set; } = null;
+    private string PlayerSymbol { get; set; } = null;
 
     public Square() {
     }
 
-    public Square(string playerNumber) {
-      PlayerNumber = playerNumber;
+    public Square(string playerSymbol) {
+      PlayerSymbol = playerSymbol;
     }
 
-    public string getPlayerNumber() {
-      return PlayerNumber;
+    public string getPlayerSymbol() {
+      return PlayerSymbol;
     }
 
-    public void setPlayerNumber(string PlayerNumber) {
-      this.PlayerNumber = PlayerNumber;
+    public void setPlayerSymbol(string playerSymbol) {
+      PlayerSymbol = playerSymbol;
     }
   }
 }
