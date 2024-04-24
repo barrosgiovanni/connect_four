@@ -9,9 +9,41 @@ namespace ConnectFourGame {
       FirstPlayer = firstPlayer;
       SecondPlayer = secondPlayer;
     }
+
+    public static Player GetFirstPlayerInfo() {
+      // asking users for their names and symbols and creating players...
+      Console.WriteLine("\nWhat is Player#1 name?");
+      string firstPlayerName = Console.ReadLine();
+      Console.WriteLine("\nPlease, choose a symbol to fill out the spaces in the board for Player#1: ");
+      string firstPlayerSymbol = Console.ReadLine();
+      Player firstPlayer = new Player(firstPlayerName, firstPlayerSymbol);
+      return firstPlayer;
+    }
+    public static Player GetSecondPlayerInfo() {
+      // asking users for their names and symbols and creating players...
+      Console.WriteLine("\nWhat is Player#2 name?");
+      string secondPlayerName = Console.ReadLine();
+      Console.WriteLine("\nPlease, choose a symbol to fill out the spaces in the board for Player#2: ");
+      string secondPlayerSymbol = Console.ReadLine();
+      Player secondPlayer = new Player(secondPlayerName, secondPlayerSymbol);
+      return secondPlayer;
+    }
     public void InstructPlayer(Player player) {
       Console.WriteLine($"\nIt is your turn {player.PlayerName}.");
       Console.WriteLine("Please, select the column you would like to drop your pieces in: ");
+    }
+    public static void WantNewGame() {
+      string wantNewGame;
+      Console.WriteLine("Would you like to start a new game? (Y/N)");
+      wantNewGame = Console.ReadLine();
+      if (wantNewGame == "Y" || wantNewGame == "y") {
+        Game newGame = new Game(GetFirstPlayerInfo(), GetSecondPlayerInfo());
+        newGame.StartTheGame();
+      } else if (wantNewGame == "Y" || wantNewGame == "y") {
+        Console.WriteLine("Thanks for playing Connect4. See you soon");
+      } else {
+        Console.WriteLine("Unknown command.");
+      }
     }
     public void StartTheGame() {
       bool isPlayerOneTurn = true; // we'll use this boolean to change player's turn once their move is complete...
@@ -28,7 +60,8 @@ namespace ConnectFourGame {
               // if checkWinner method returns true:
               isGameRunning = !isGameRunning; // we stop the game...
               Gameboard.DisplayGameboard(); // display the board for the last time...
-              Console.WriteLine($"Congrats {FirstPlayer.PlayerName}! You won!"); // // announce the winner...
+              Console.WriteLine($"\nCongrats {FirstPlayer.PlayerName}! You won!"); // announce the winner...
+              WantNewGame();
             } else {
               // if the checkWinner method returns false, we change the turn and the other player plays...
               isPlayerOneTurn = !isPlayerOneTurn;
@@ -43,7 +76,8 @@ namespace ConnectFourGame {
               // if checkWinner method returns true:
               isGameRunning = !isGameRunning; // we stop the game...
               Gameboard.DisplayGameboard(); // display the board for the last time...
-              Console.WriteLine($"Congrats {SecondPlayer.PlayerName}! You won!"); // announce the winner...
+              Console.WriteLine($"\nCongrats {SecondPlayer.PlayerName}! You won!"); // announce the winner...
+              WantNewGame();
             } else {
               // if the checkWinner method returns false, we change the turn and the other player plays...
               isPlayerOneTurn = !isPlayerOneTurn;
