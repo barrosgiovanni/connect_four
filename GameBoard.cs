@@ -30,6 +30,83 @@ namespace ConnectFourGame {
         return false;
       }
     }
+    public bool CheckWinner(string columnPlayed, string winnerSymbol) {
+      int columnChosen = int.Parse(columnPlayed) - 1;
+      bool isGameOver = false; // we'll be returning this boolean at the end...
+      for (int row = 0; row < numOfRows; row++) {
+        if (gameBoard[row, columnChosen] != null) { // we'll only check if the piece is occupied by a symbol...
+          int connections = 1; // we start with 1 and if it gets to 4 then we have a winner...
+          // checking vertically...
+          for (int xRow = row + 1; xRow < numOfRows; xRow++) {
+            if (gameBoard[xRow, columnChosen].GetPlayerSymbol() == winnerSymbol) {
+              connections++; // we add 1 connection if the symbols match...
+              if (connections == 4) {
+                isGameOver = true;
+              }
+            } else {
+              connections = 1; // we reset if the symbols don't match...
+            }
+          }
+          // checking horizontally...
+          connections = 0; // in this case will be 0...
+          for (int yCol = columnChosen - 3; yCol < numOfColumns + 3;  yCol++) {
+            if (yCol < 0) { // we just ignore when column index is less than zero...
+              continue;
+            }
+            if (yCol >= numOfColumns) { // we break if the column index is higher than the number of columns...
+              break;
+            }
+            if (gameBoard[row, yCol] != null && gameBoard[row, yCol].GetPlayerSymbol() == winnerSymbol) {
+              connections++; // we add 1 connection if the symbols match...
+              if (connections == 4) {
+                isGameOver = true;
+              }
+            } else {
+              connections = 0; // we reset if the symbols don't match...
+            }
+          }
+
+          // checking left diagonal...
+          connections = 0; // in this case will be 0...
+          for (int xRow = row - 3, yCol = columnChosen - 3; xRow <= numOfRows + 3 && yCol <= numOfColumns + 3; xRow++, yCol++) {
+            if (xRow < 0 || yCol < 0) { // we just ignore when row or column index is less than zero...
+              continue;
+            }
+            if (xRow >= numOfRows || yCol >= numOfColumns) { // we break if the row or column index is higher than the number of rows or columns...
+              break;
+            }
+            if (gameBoard[xRow, yCol] != null && gameBoard[xRow, yCol].GetPlayerSymbol() == winnerSymbol) {
+              connections++; // we add 1 connection if the symbols match...
+              if (connections == 4) {
+                isGameOver = true;
+              }
+            } else {
+              connections = 0; // we reset if the symbols don't match...
+            }
+          }
+
+          // checking right diagonal...
+          for (int xRow = row - 3, yCol = columnChosen + 3; xRow <= row + 3 && yCol >= columnChosen - 3; xRow++, yCol--) {
+            if (xRow < 0 || yCol >= numOfColumns) { // we just ignore when row or column index is less than zero...
+              continue;
+            }
+            if (xRow >= numOfRows || yCol < 0) { // we break if the row or column index is higher than the number of rows or columns...
+              break;
+            }
+            if (gameBoard[xRow, yCol] != null && gameBoard[xRow, yCol].GetPlayerSymbol() == winnerSymbol) {
+              connections++; // we add 1 connection if the symbols match...
+              if (connections == 4) {
+                isGameOver = true;
+              }
+            } else {
+              connections = 0; // we reset if the symbols don't match...
+            }
+          }
+          break;
+        }
+      }
+      return isGameOver;
+    }
     public void DisplayGameboard() {
       Console.WriteLine();
       // printing board positions...
