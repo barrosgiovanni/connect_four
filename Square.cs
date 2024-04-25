@@ -1,20 +1,11 @@
 namespace ConnectFourGame {
   public class Square {
-    private string PlayerSymbol { get; set; } = null;
-    // each square has a player symbol propertie, that is going to be assigned as the players choose their moves...
-
+    public string PlayerSymbol { get; set; } = null; // symbol property is assigned as the players choose their moves...
+    private Player Owner { get; set;} = null;
     public Square() {
     }
-    public Square(string playerSymbol) {
-      PlayerSymbol = playerSymbol;
-    }
-
-    public string GetPlayerSymbol() {
-      return PlayerSymbol;
-    }
-
-    public void SetPlayerSymbol(string playerSymbol) {
-      PlayerSymbol = playerSymbol;
+    public Square(Player owner) {
+      PlayerSymbol = owner.PlayerSymbol;
     }
   }
 }

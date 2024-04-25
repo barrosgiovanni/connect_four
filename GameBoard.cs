@@ -7,26 +7,34 @@ namespace ConnectFourGame {
     Square[,] gameBoard = new Square[numOfRows, numOfColumns]; // array of Squares that represent the gameboard...
     int[] boardPositions = { 1, 2, 3, 4, 5, 6, 7 }; // defining board positions to help players when choosing next move...
     public bool PlayerMove(string playerChoice, string playerSymbol) {
-      int moveColumn = int.Parse(playerChoice) - 1; // we get the user input and find the column index he wants play...
-      // if the index that was chosen is valid, then we'll proceed...
-      if (moveColumn >= 0 && moveColumn < numOfColumns ) {
-        // also checking if the column is not already full...
-        if (gameBoard[0, moveColumn] == null) {
-          // if the column is not full, then we'll add square that is not filled out, and add the player symbol...
-          for (int row = numOfRows-1; row >= 0; row--) {
-            if (gameBoard[row, moveColumn] == null) {
-              gameBoard[row, moveColumn] = new Square();
-              gameBoard[row, moveColumn].SetPlayerSymbol(playerSymbol);
-              break;
+      try {
+        int moveColumn = int.Parse(playerChoice) - 1; // we get the user input and find the column index he wants play...
+        // if the index that was chosen is valid, then we'll proceed...
+        if (moveColumn >= 0 && moveColumn < numOfColumns ) {
+          // also checking if the column is not already full...
+          if (gameBoard[0, moveColumn] == null) {
+            // if the column is not full, then we'll add square to fill it out, and add the player symbol...
+            for (int row = numOfRows-1; row >= 0; row--) {
+              if (gameBoard[row, moveColumn] == null) {
+                gameBoard[row, moveColumn] = new Square();
+                gameBoard[row, moveColumn].PlayerSymbol = playerSymbol ;
+                break;
+              }
             }
+            return true;
+          } else {
+            // displaying message for when the column is full...
+            Console.WriteLine("\nInvalid move! The column you chose is full!");
+            return false;
           }
-          return true;
         } else {
-          Console.WriteLine("Invalid move. Column is full!");
+          // displaying message for when the user chooses a column which is not between 1 and 7...
+          Console.WriteLine("\nInvalid move! You must choose a column between 1 and 7!");
           return false;
         }
-      } else {
-        Console.WriteLine("Invalid move. Please, select a column between 1 and 7");
+      } catch (FormatException ex) {
+        // handling a format exception for when the user input is something different than a integer...
+        Console.WriteLine($"\nInvalid move! {ex.Message} You must choose a column between 1 and 7.");
         return false;
       }
     }
@@ -38,7 +46,7 @@ namespace ConnectFourGame {
           int connections = 1; // we start with 1 and if it gets to 4 then we have a winner...
           // checking vertically...
           for (int xRow = row + 1; xRow < numOfRows; xRow++) {
-            if (gameBoard[xRow, columnChosen].GetPlayerSymbol() == winnerSymbol) {
+            if (gameBoard[xRow, columnChosen].PlayerSymbol == winnerSymbol) {
               connections++; // we add 1 connection if the symbols match...
               if (connections == 4) {
                 isGameOver = true;
@@ -56,7 +64,7 @@ namespace ConnectFourGame {
             if (yCol >= numOfColumns) { // we break if the column index is higher than the number of columns...
               break;
             }
-            if (gameBoard[row, yCol] != null && gameBoard[row, yCol].GetPlayerSymbol() == winnerSymbol) {
+            if (gameBoard[row, yCol] != null && gameBoard[row, yCol].PlayerSymbol == winnerSymbol) {
               connections++; // we add 1 connection if the symbols match...
               if (connections == 4) {
                 isGameOver = true;
@@ -75,7 +83,7 @@ namespace ConnectFourGame {
             if (xRow >= numOfRows || yCol >= numOfColumns) { // we break if the row or column index is higher than the number of rows or columns...
               break;
             }
-            if (gameBoard[xRow, yCol] != null && gameBoard[xRow, yCol].GetPlayerSymbol() == winnerSymbol) {
+            if (gameBoard[xRow, yCol] != null && gameBoard[xRow, yCol].PlayerSymbol == winnerSymbol) {
               connections++; // we add 1 connection if the symbols match...
               if (connections == 4) {
                 isGameOver = true;
@@ -93,7 +101,7 @@ namespace ConnectFourGame {
             if (xRow >= numOfRows || yCol < 0) { // we break if the row or column index is higher than the number of rows or columns...
               break;
             }
-            if (gameBoard[xRow, yCol] != null && gameBoard[xRow, yCol].GetPlayerSymbol() == winnerSymbol) {
+            if (gameBoard[xRow, yCol] != null && gameBoard[xRow, yCol].PlayerSymbol == winnerSymbol) {
               connections++; // we add 1 connection if the symbols match...
               if (connections == 4) {
                 isGameOver = true;
@@ -121,7 +129,7 @@ namespace ConnectFourGame {
           if (gameBoard[row, column] == null) {
             Console.Write("_");
           } else {
-            Console.Write(gameBoard[row, column].GetPlayerSymbol());
+            Console.Write(gameBoard[row, column].PlayerSymbol);
           }
           Console.Write("|");
         }
